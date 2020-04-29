@@ -1,0 +1,44 @@
+version: '3.5'
+
+services:
+
+    mysql:
+        container_name: spring-boot-mysql_mysql
+        image: mysql:5.7.29
+        volumes:
+            - mysql_data:/var/lib/mysql
+        restart: always
+        environment:
+            - MYSQL_DATABASE=spring-boot-mysql_db
+            - MYSQL_ROOT_PASSWORD=root
+        networks:
+            - spring-boot-mysql_net
+
+    redis:
+        container_name: spring-boot-mysql_redis
+        image: redis
+
+    webapp:
+        container_name: spring-boot-mysql_webapp
+        image: adoptopenjdk/openjdk11:alpine-jre
+        depends_on:
+            - mysql
+            - redis
+        volumes:
+            - ./build/libs/spring-boot-mysql-0.0.1-SNAPSHOT.jar:/app/app.jar
+        environment:
+            app.db.host: mysql
+        restart: on-failure
+        ports:
+            - "8080:8080"
+        command: "java -jar /app/app.jar"
+        networks:
+            - spring-boot-mysql_net
+
+volumes:
+    mysql_data:
+
+networks:
+    spring-boot-mysql_net:
+        name: spring-boot-mysql_net
+        driver: bridge
