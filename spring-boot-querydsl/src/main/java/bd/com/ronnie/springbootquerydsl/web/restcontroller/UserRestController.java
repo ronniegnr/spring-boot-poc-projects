@@ -1,5 +1,6 @@
 package bd.com.ronnie.springbootquerydsl.web.restcontroller;
 
+import bd.com.ronnie.springbootquerydsl.entity.QUser;
 import bd.com.ronnie.springbootquerydsl.entity.User;
 import bd.com.ronnie.springbootquerydsl.service.UserService;
 import com.querydsl.jpa.impl.JPAQuery;
@@ -29,16 +30,6 @@ public class UserRestController {
     @GetMapping("")
     public List<User> getUsers() {
         return userService.getUsers();
-    }
-
-    @GetMapping("qd")
-    public List<User> getUsers2() {
-        QUser qUser = QUser.user;
-        JPAQuery query = new JPAQuery(entityManager);
-
-        query.from(qUser);
-        List c1 = query.fetch();
-        return c1;
     }
 
 }
