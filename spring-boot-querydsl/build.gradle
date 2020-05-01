@@ -13,36 +13,29 @@ repositories {
 	mavenCentral()
 }
 
-def queryDslVersion = '4.1.4'
-
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	runtimeOnly 'mysql:mysql-connector-java'
-	compile("com.querydsl:querydsl-jpa:${queryDslVersion}")
-    compile("com.querydsl:querydsl-apt:${queryDslVersion}")
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	implementation 'com.querydsl:querydsl-jpa'
+    implementation 'com.querydsl:querydsl-apt'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
-apply plugin: "com.ewerk.gradle.plugins.querydsl"
+apply plugin: 'com.ewerk.gradle.plugins.querydsl'
+def queryDslSourceDirectory = 'src/main/generated'
 
-// make generated classes visible to the ide
+querydsl {
+    jpa = true
+    querydslSourcesDir = queryDslSourceDirectory
+}
+
 sourceSets {
     main {
         java {
-            srcDir "$buildDir/generated/source/apt/main"
+            srcDir queryDslSourceDirectory
         }
     }
-}
-
-// configuration of querydsl
-// possible values are = https://github.com/ewerk/gradle-plugins/tree/master/querydsl-plugin
-querydsl {
-    jpa = true
-    //hibernate = true
-    querydslSourcesDir = "$buildDir/generated/source/apt/main"
 }
 
 compileQuerydsl {
@@ -52,7 +45,6 @@ compileQuerydsl {
 configurations {
     querydsl.extendsFrom compileClasspath
 }
-
 
 test {
 	useJUnitPlatform()

@@ -50,7 +50,7 @@ public class User extends AbstractAuditingEntity {
     private User() {
     }
 
-    public User newObjectWithDefaults() {
+    public static User newObjectWithDefaults() {
         User user = new User();
         user.status = Status.INACTIVE;
         user.role = Role.USER;
