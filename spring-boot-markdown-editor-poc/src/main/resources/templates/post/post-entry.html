@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Spring Boot Markdown Test</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/editormd.min.css}"/>
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/js/editormd.min.js}"></script>
+
 </head>
+
 <body>
+
+<div id="test-editor">
+    <textarea style="display:none;">### Editor.md
+
+**Editor.md**: The open source embeddable online markdown editor, based on CodeMirror & jQuery & Marked.
+    </textarea>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var editor = editormd("test-editor", {
+            // width  : "100%",
+            // height : "100%",
+            // path: "editormd/lib/"
+            path: "/js/lib/"
+        });
+    });
+</script>
 
 </body>
 </html>
