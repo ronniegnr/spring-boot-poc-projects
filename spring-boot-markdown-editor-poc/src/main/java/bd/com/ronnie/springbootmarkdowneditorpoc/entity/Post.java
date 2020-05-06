@@ -24,7 +24,11 @@ public class Post {
 
     @NotNull
     @Column(columnDefinition = "TEXT")
-    private String content;
+    private String htmlContent;
+
+    @NotNull
+    @Column(columnDefinition = "TEXT")
+    private String markdownContent;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -55,12 +59,20 @@ public class Post {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getHtmlContent() {
+        return htmlContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setHtmlContent(String content) {
+        this.htmlContent = content;
+    }
+
+    public String getMarkdownContent() {
+        return markdownContent;
+    }
+
+    public void setMarkdownContent(String markdownContent) {
+        this.markdownContent = markdownContent;
     }
 
     public Status getStatus() {
@@ -79,6 +91,6 @@ public class Post {
         this.createdAt = createdAt;
     }
 
-    public enum Status {ACTIVE, INACTIVE}
+    public enum Status {ACTIVE, DRAFT, INACTIVE}
 
 }
