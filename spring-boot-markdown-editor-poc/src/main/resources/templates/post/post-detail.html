@@ -9,6 +9,11 @@
 </head>
 
 <body>
+<div>
+    <a th:href="@{/posts/entry}">Post Entry</a>&nbsp;|&nbsp;
+    <a th:href="@{/posts/list}">Post List</a>
+</div>
+<br><br>
 
 <ul>
     <li th:text="${post.id}"></li>

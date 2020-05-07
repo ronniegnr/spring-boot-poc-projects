@@ -10,6 +10,12 @@
 
 <body>
 
+<div>
+    <a th:href="@{/posts/entry}">Post Entry</a>&nbsp;|&nbsp;
+    <a th:href="@{/posts/list}">Post List</a>
+</div>
+<br><br>
+
 <ol th:each="post : ${posts}">
     <li>
         <a th:href="@{/posts/detail} + '?post_id=' + ${post.id}" th:text="${post.title}" th:target="_blank"></a>

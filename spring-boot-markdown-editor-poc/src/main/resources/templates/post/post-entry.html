@@ -18,6 +18,11 @@
 </head>
 
 <body>
+<div>
+    <a th:href="@{/posts/entry}">Post Entry</a>&nbsp;|&nbsp;
+    <a th:href="@{/posts/list}">Post List</a>
+</div>
+<br><br>
 
 <form action="#" th:action="@{/posts/entry}" method="post">
     <div>title: <input th:type="text" th:name="title" style="width: 300px"/></div>
