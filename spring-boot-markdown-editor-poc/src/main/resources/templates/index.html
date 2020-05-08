@@ -9,21 +9,13 @@
 </head>
 
 <body>
+
 <div>
     <a th:href="@{/posts/entry}">Post Entry</a>&nbsp;|&nbsp;
     <a th:href="@{/posts/list}">Post List</a>&nbsp;|&nbsp;
     <a href="http://localhost:8080/h2-console/login.jsp">H2 Database</a>
 </div>
 <br><br>
-
-<ul>
-    <li th:text="${post.id}"></li>
-    <li th:text="${post.title}"></li>
-    <li th:text="${post.markdownContent}"></li>
-    <li th:text="${post.htmlContent}"></li>
-    <li th:text="${post.status}"></li>
-    <li th:text="${post.createdAt}"></li>
-</ul>
 
 </body>
 </html>
