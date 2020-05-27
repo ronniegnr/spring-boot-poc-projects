@@ -17,4 +17,3 @@
     - gradle clean build
     
 - Run the test method to check functionality
-
