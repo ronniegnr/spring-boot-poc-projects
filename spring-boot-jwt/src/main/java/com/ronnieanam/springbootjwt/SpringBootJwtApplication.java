@@ -1,13 +1,13 @@
-package com.bd.ronnie.pocspringbootjwt;
+package com.ronnieanam.springbootjwt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PocSpringBootJwtApplication {
+public class SpringBootJwtApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PocSpringBootJwtApplication.class, args);
+        SpringApplication.run(SpringBootJwtApplication.class, args);
     }
 
 }

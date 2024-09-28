@@ -1,10 +1,10 @@
-package com.bd.ronnie.pocspringbootjwt;
+package com.ronnieanam.springbootjwt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PocSpringBootJwtApplicationTests {
+class SpringBootJwtApplicationTests {
 
     @Test
     void contextLoads() {
