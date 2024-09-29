@@ -1,6 +1,6 @@
 package com.ronnieanam.springbootjwt.config;
 
-import com.ronnieanam.springbootjwt.jwt.JwtRequestFilter;
+import com.ronnieanam.springbootjwt.filter.JwtRequestFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -23,15 +23,15 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeRequests -> {
                     authorizeRequests.requestMatchers("/login", "register").permitAll();
                     authorizeRequests.anyRequest().authenticated();
                 })
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        return http.build();
+        return httpSecurity.build();
     }
 
     @Bean

@@ -1,4 +1,4 @@
-package com.ronnieanam.springbootjwt.jwt;
+package com.ronnieanam.springbootjwt.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
